@@ -1,1 +1,14 @@
 Meeting 2/16/2018
+11:00am
+Norlin Library M250D
+
+Attendees:
+Spencer Wegner
+Chad Brokaw
+Garrison Lee
+Christoph Uhl
+Sabrina Touch
+
+We further discussed project ideas and decided to create a Spotify API that allows event hosts to create the "perfect party playlist" by consolidating attendees' playlists and finding common songs. 
+
+We drafted our milestone 1 document.
