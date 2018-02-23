@@ -1,0 +1,12 @@
+2_23_2018 Meeting
+
+- Website
+	- front end HTML/CSS
+	- design/organization
+
+- Relational Database SQL
+	- Map
+
+- Middle Layer Node JS
+
+- Algorithms/API
