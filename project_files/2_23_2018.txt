@@ -1,12 +1,27 @@
-2_23_2018 Meeting
+2_23_2018 Meeting | To-Do Outline
 
-- Website
+- WEBSITE
 	- front end HTML/CSS
 	- design/organization
 
-- Relational Database SQL
+	- WEBSITE | PAGES
+		- Party-goer submit link
+	
+	"p3.com"
+       **HOME PAGE**
+	     |-->[Create an Account]
+             |	    |
+             |      |      				
+	     |-->[Login: Sign Up or Create]
+             |	    |
+	     |      |-->[(Host) Create Playlist]
+	     |                          
+	     |-->[Submit]    
+	    	
+
+- RELATIONAL DATABASE SQL
 	- Map
 
-- Middle Layer Node JS
+- MIDDLE LAYER NODE JS
 
-- Algorithms/API
+- ALGORITHMS/API
