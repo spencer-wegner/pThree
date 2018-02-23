@@ -1,6 +1,6 @@
 Meeting 2/23/2018
 11:00am
-
+Gemmill Library Green Room
 
 Attendees:
 
@@ -12,7 +12,7 @@ Identify tasks and sprints; break the project down into smaller steps
 
 Create a work breakdown schedule (WBS)
 
-Prepare for our first sprint
+Prepare for our first sprint and divide up tasks -- front end website design HTML/CSS
 
 Start working on first sprint
 
