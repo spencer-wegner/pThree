@@ -3,6 +3,11 @@ Meeting 2/23/2018
 Gemmill Library Green Room
 
 Attendees:
+Spencer Wegner
+Sabrina Touch
+Chad Brokaw
+Michael Hering
+Christoph Uhl
 
 Agenda:
 
@@ -15,4 +20,14 @@ Create a work breakdown schedule (WBS)
 Prepare for our first sprint and divide up tasks -- front end website design HTML/CSS
 
 Start working on first sprint
+
+Debrief:
+
+We broke the project down into 4 main components: 
+-front end user interface 
+-relational database
+-middle layer
+-algorithms/API
+
+We started planning out the pages for the website and the process from the user's point of view
 
