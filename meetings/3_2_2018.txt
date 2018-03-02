@@ -1,0 +1,26 @@
+Meeting 3/2/2018
+11:00am
+ITLL 143
+
+Attendees:
+
+Agenda:
+
+Use Milestone 2 to reconfigure our approach to the project
+
+Milestone 2
+Project Management Tool
+-Describe project management software
+-Document requirements (functional and non-functional)
+-Discuss and document a project plan (number of sprints/features)
+Plan Cycle
+-Create and document 3-week sprint with project management tool
+-Create and assign tasks and due dates (i.e. GANTT Chart)
+-Layout Kanban approach (put tasks in To-Do column)
+Agile Methodology
+-We will do an agile standup meeting at the beginning of our meeting next week -- be prepared!
+
+
+Debrief:
+
+
