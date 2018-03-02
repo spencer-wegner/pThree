@@ -3,6 +3,12 @@ Meeting 3/2/2018
 ITLL 143
 
 Attendees:
+Spencer Wegner
+Chad Brokaw
+Christoph Uhl
+Sabrina Touch
+Michael Hering
+Garrison Lee
 
 Agenda:
 
@@ -23,4 +29,6 @@ Agile Methodology
 
 Debrief:
 
-
+We began Milestone 2.
+We decided our Project Management Tool will be GitHub Project Board and a GANTT Chart in Google Sheets.
+We came up with project requirements and laid out a plan for our first sprint which will be to develop a "Create and Account Page" and "Login Page" with full functionality.ter
