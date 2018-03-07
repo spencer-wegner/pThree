@@ -1,0 +1,23 @@
+Meeting 3/9/2018
+11:00am
+ITLL 143
+
+Attendees:
+
+Agenda:
+
+Agile Standup Meeting ~ 5 minutes
+Everyone stands up and we go around to every person.
+Each person answers the following questions:
+(1) What have you completed since the last meeting?
+(2) What will you complete before the next meeting?
+(3) Describe any obstacles or road blocks you face.
+
+Sprint Retrospective
+Discuss the progress of the current sprint - what went well, what did not go well, and what should be improved upon for the next sprint.
+
+Finish up Milestone 2
+
+If needed, help team members with problems. 
+
+Debrief:
