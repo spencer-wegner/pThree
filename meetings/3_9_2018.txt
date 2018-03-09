@@ -3,6 +3,9 @@ Meeting 3/9/2018
 ITLL 143
 
 Attendees:
+Spencer Wegner
+Christoph Uhl
+Sabrina Touch
 
 Agenda:
 
@@ -21,3 +24,7 @@ Finish up Milestone 2
 If needed, help team members with problems. 
 
 Debrief:
+
+We conducted an agile standup meeting and a sprint retrospective meeting.
+
+We finished Milestone 2.
