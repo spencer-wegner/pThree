@@ -1,0 +1,110 @@
+/* Chad Brokaw*/
+
+body {
+	background: #292a2b !important;
+}
+
+#header1
+{
+  text-align: center;
+  color: #339fff;
+  padding-bottom: 1%;
+  padding-top: 10%;
+  font-size: 60px;
+  font-family: Helvetica neue;
+  font-weight: bold;
+}
+
+#pThreeLogo
+{
+  width:130px;
+  height:130px;
+  display: block;
+  margin-left: auto;
+  padding-right: 15px;
+  padding-top: 15px;
+}
+
+#pThreeBack
+{
+  width:100px;
+  height:100px;
+  display: block;
+  margin-right: auto;
+  padding-left: 15px;
+  padding-top: 15px;
+}
+
+
+.form-login {
+  max-width: 395px;
+  padding: 15px 35px 45px;
+  margin: 0 auto;
+	}
+
+.form-control
+{
+  	font-size: 16px;
+    font-family: Helvetica neue;
+    height: auto;
+    padding: 10px;
+}
+
+#text
+{
+	  margin-bottom: -1px;
+	  border-bottom-left-radius: 0;
+	  border-bottom-right-radius: 0;
+	}
+
+#password
+{
+	  margin-bottom: -1px;
+	  border-top-left-radius: 0;
+	  border-top-right-radius: 0;
+    border-bottom-left-radius: 0;
+	  border-bottom-right-radius: 0;
+}
+
+#ConfirmPassword
+{
+	  margin-bottom: 10px;
+	  border-top-left-radius: 0;
+	  border-top-right-radius: 0;
+}
+
+.buttonLogin
+{
+    background-color: #292a2b;
+    border: none;
+    color: #339fff;
+    padding: 16px 32px;
+    padding-left: 122px;
+    padding-right: 122px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 20px;
+    font-family: Helvetica neue;
+    margin: 4px 2px;
+    -webkit-transition-duration: 0.4s;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    border-radius: 7px;
+    border: 2px solid #292a2b;
+}
+
+.buttonLogin:hover
+{
+    color: #339fff;
+    font-size: 20px;
+    padding-left: 121px;
+    padding-right: 121px;
+    font-family: Helvetica neue;
+    border: 2px solid #339fff;
+    border-radius: 7px;
+}
+
+.wrapper
+{
+    text-align: center;
+}
