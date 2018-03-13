@@ -117,3 +117,33 @@
   border: 2px solid #339fff;
   border-radius: 35px;
 }
+
+.buttonAbout
+{
+  background-color: #292a2b;
+  border: none;
+  color: white;
+  padding: 16px 32px;
+  padding-left: 63px;
+  padding-right: 66px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 20px;
+  font-family: Helvetica neue;
+  margin: 4px 2px;
+  -webkit-transition-duration: 0.4s;
+  transition-duration: 0.4s;
+  cursor: pointer;
+  border-radius: 35px;
+  border: 2px solid #FFFFFF;
+}
+
+.buttonAbout:hover
+{
+  background-color: white;
+  color: #339fff;
+  font-size: 20px;
+  font-family: Helvetica neue;
+  border: 2px solid #339fff;
+  border-radius: 35px;
+}
