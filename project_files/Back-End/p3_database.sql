@@ -6,6 +6,11 @@
  	- Will probably need to use FOREIGN KEY instead of PRIMARY KEY.
   ***/
 
+/* TO CREATE THE DATABASE CALLED 'p3_database' */
+CREATE database p3_database;
+use p3_database; 
+
+
 /* TABLE #1 */
 CREATE TABLE if not exists user_login (
 	userID 		int(1) 		NOT NULL	auto_increment, 
