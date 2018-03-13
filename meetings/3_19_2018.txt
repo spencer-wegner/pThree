@@ -11,5 +11,6 @@ Work on finishing sprint #1:
 -Get front end webpage working with middle layer through node js and with database in mysql
 -User login and create account stores information in database and retrieves information from database
 -Submit playlist link stores given link in database
+-Crete an ER diagram
 
 Debrief:
