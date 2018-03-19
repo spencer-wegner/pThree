@@ -1,9 +1,14 @@
 Meeting 3/19/2018
 11:00am
-ITLL 143
+ITLL 137
 
 Attendees:
-
+Spencer Wegner
+Chad Brokaw
+Garrison Lee
+Michael Herring
+Christoph Uhl
+Sabrina Touch
 
 Agenda:
 
@@ -14,3 +19,7 @@ Work on finishing sprint #1:
 -Crete an ER diagram
 
 Debrief:
+
+We made an ER diagram and sorted out the table keys
+We discussed how the application will work as a whole
+We identified how the middle layer will interact with the front end and the back end
