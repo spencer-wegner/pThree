@@ -1,0 +1,16 @@
+Meeting 4/6/2018
+11:00am
+ITLL 
+
+Attendees:
+
+
+Agenda:
+Work on Milestone 4 - Due this Sunday, April 8th
+-Entity Relationship Diagram (ERD)
+-Write sql scripts to populate our database
+
+Work together on project; everyone should have something to work on. If not, help someone else!
+
+
+Debrief:
