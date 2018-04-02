@@ -119,7 +119,7 @@ var server = http.createServer(function(request, response) {
 			response.writeHead(200, {"Content-Type": "text/html"});
 			response.write(create_html)
 			break;
-		case "/p3Create.html" :
+		case "/p3Create.css" :
 			response.writeHead(200, {"Content-Type": "text/css"});
 			response.write(create_css)
 			break;
@@ -128,7 +128,7 @@ var server = http.createServer(function(request, response) {
 			response.writeHead(200, {"Content-Type": "text/html"});
 			response.write(login_html)
 			break;
-		case "/p3Login.html" :
+		case "/p3Login.css" :
 			response.writeHead(200, {"Content-Type": "text/css"});
 			response.write(login_css)
 			break;
