@@ -1,5 +1,7 @@
 var express = require('express');
 var router = express.Router();
+var mysql = require('mysql');
+var connection = require('./../db')
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -23,7 +25,24 @@ router.get('/p3Login.html', function(req, res, next) {
 });
 
 router.post('/p3Login.html', function(req,res, next) {
-	res.sendFile('placeholder.html', {root: __dirname});
+	var Nombre = req.body.username;
+	var ShallPass = req.body.password;
+	var sql = mysql.format("SELECT * FROM user_login WHERE username=?",[Nombre]);
+	var pswd = 'NULL';
+	connection.query(sql, function (err, rows) {
+		if ( err ) throw err;
+		if (!rows.length) {
+			res.sendFile('p3Login.html', {root: __dirname});
+		}
+		else {pswd = rows[0].password;}
+		if (pswd == ShallPass) {
+			res.writeHead(200, {'Content-Type': 'text/plain'});
+			res.end("You're in! Booya!");	
+		}
+		else {
+			res.sendFile('p3Login.html', {root: __dirname});
+		}
+	});
 })
 
 router.get('/p3LogoColored.png', function(req, res, next) {
