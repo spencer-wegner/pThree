@@ -1,5 +1,3 @@
-<!--Chad Brokaw -->
-<!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -8,38 +6,33 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
-    <link rel="stylesheet" href="p3Main.css">
+    <link rel="stylesheet" href="p3Submit.css">
 
-    <title>pThree</title>
+    <title>Submit a Playlist</title>
   </head>
+  <table style="width:100%">
+    <tr>
+      <th>
+        <a href="p3Main.html">
+          <img src="pThreeBackPressedDark.png" alt="pThree back button not pressed" id = "pThreeBack">
+        </a>
+      </th>
+      <td>
+          <img src="p3LogoColored.png" alt="pThree Logo" id = "pThreeLogo">
+      </td>
+    </tr>
+  </table>
   <body>
-    <img src="p3LogoColored.png" alt="pThree logo no border" id = "pThreeLogo">
     <h1 id = "header1">
-      Welcome to pThree
+      Submit Your Playlist
     </h1>
-    <br>
-    <br>
     <div class="wrapper">
-      <a href="p3Login.html">
+     <form class="form-login">
+        <input id="text" class="form-control" name="username" placeholder="Spotify Username" required=""  autofocus=""/>
+        <input id="password" type ="password" class="form-control" name="password" placeholder="Playlist Name" required=""/>
         <button class="buttonLogin">Login</button>
-      </a>
+     </form>
     </div>
-    <div class="wrapper">
-      <a href="p3Create.html">
-        <button class="buttonCreate">Create Account</button>
-      </a>
-    </div>
-    <div class="wrapper">
-      <a href="p3Submit.html">
-        <button class="buttonSubmit">Submit a Playlist</button>
-      </a>
-    </div>
-    <div class="wrapper">
-      <a href="p3About.html">
-        <button class="buttonAbout">About Us</button>
-      <a>
-    </div>
-
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
