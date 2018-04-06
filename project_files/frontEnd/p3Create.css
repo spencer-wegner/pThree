@@ -50,12 +50,12 @@ body {
     padding: 10px;
 }
 
-#text
+#username
 {
 	  margin-bottom: -1px;
 	  border-bottom-left-radius: 0;
 	  border-bottom-right-radius: 0;
-	}
+}
 
 #password
 {
@@ -71,6 +71,48 @@ body {
 	  margin-bottom: 10px;
 	  border-top-left-radius: 0;
 	  border-top-right-radius: 0;
+}
+
+#messagePWD
+{
+	font-family: Helvetica neue;
+	display: none;
+	position: center;
+	padding: 20px;
+	margin-left: 36%;
+	margin-right: 36%;
+	margin-top: -45px
+}
+
+#messagePWD p
+{
+	padding: 5px 35px;
+	text-align: left;
+	font-size: 16px;
+}
+
+
+.valid
+{
+	color: green;
+}
+
+.valid:before
+{
+	color: green;
+	position: relative;
+	left: -35px;
+	content: "\2713";
+}
+
+.invalid {
+    color: red;
+}
+
+.invalid:before {
+    position: relative;
+    left: -35px;
+    content: "✖";
 }
 
 .buttonLogin
