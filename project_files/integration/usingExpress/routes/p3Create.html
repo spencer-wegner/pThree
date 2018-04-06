@@ -30,10 +30,11 @@
     Hello
   </h1>
 <div class="wrapper">
- <form class="form-login" method="post">
-    <input id="text" class="form-control" name="username" placeholder="Email Address" required=""  autofocus="" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"/>
-    <input id="password" type ="password" class="form-control" name="password" placeholder="Password" required=""/>
-    <input id="ConfirmPassword" type ="password" class="form-control" name="ConfirmPassword" placeholder="Confirm Password" required="" oninput="ComparisonCheck(this)" />
+ <form class="form-login">
+    <input id="username" class="form-control" name="username" placeholder="Username" required=""  autofocus="" minlength = "3" maxlength="15"/>
+    <input id="password" type ="password" class="form-control" name="password" placeholder="Password" required="" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"/>
+    <input id="ConfirmPassword" type ="password" class="form-control" name="ConfirmPassword" placeholder="Confirm Password" required="" oninput="ComparisonCheck(this)" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"/>
+    <button class="buttonLogin">Sign Up</button>
     <script>
       function ComparisonCheck(input) {
         if (input.value != document.getElementById('password').value) {
@@ -44,9 +45,122 @@
         }
       }
     </script>
-    <button class="buttonLogin">Sign Up</button>
  </form>
 </div>
+<div id="messagePWD">
+    <p id="letter" class="invalid"><b>Lowercase Letter</b></p>
+    <p id="capital" class="invalid"><b>Uppercase Letter</b></p>
+    <p id="number" class="invalid"><b>Number</b></p>
+    <p id="length" class="invalid"><b>Minimum 8 Characters</b></p>
+</div>
+<!-- Credit to W3 Schools for helping create the following code-->
+<script>
+  var usernameInput = document.getElementById("username");
+
+  usernameInput.onfocus = function()
+  {
+    document.getElementById("messagePWD").style.display = "none";
+    document.getElementById("messageCON").style.display = "none";
+  }
+</script>
+
+<script>
+  var myPSWDInput = document.getElementById("password");
+  var letter = document.getElementById("letter");
+  var capital = document.getElementById("capital");
+  var number = document.getElementById("number");
+  var length = document.getElementById("length");
+
+  myPSWDInput.onfocus = function() //The user has clicked on the password block
+  {
+    document.getElementById("messagePWD").style.display = "block";
+    document.getElementById("messageCON").style.display = "none";
+    document.getElementById("messagePWD").scrollIntoView();
+  }
+
+  myPSWDInput.onblur = function() //The user has clicked away from the password block
+  {
+    document.getElementById("messagePWD").style.display = "none";
+  }
+
+  myPSWDInput.onkeyup = function() //Function to validate the password entr as it is entered
+  {
+    var lowerCaseLetters = /[a-z]/g;
+    if(myPSWDInput.value.match(lowerCaseLetters))
+    {
+      letter.classList.remove("invalid");
+      letter.classList.add("valid");
+    }
+    else {
+      letter.classList.remove("valid");
+      letter.classList.add("invalid");
+    }
+
+    var upperCaseLetters = /[A-Z]/g;
+    if(myPSWDInput.value.match(upperCaseLetters))
+    {
+      capital.classList.remove("invalid");
+      capital.classList.add("valid");
+    }
+    else {
+      capital.classList.remove("valid");
+      capital.classList.add("invalid");
+    }
+
+    var numbers = /[0-9]/g;
+    if(myPSWDInput.value.match(numbers))
+    {
+      number.classList.remove("invalid");
+      number.classList.add("valid");
+    }
+    else {
+      number.classList.remove("valid");
+      number.classList.add("invalid");
+    }
+
+    if(myPSWDInput.value.length >= 8)
+    {
+      length.classList.remove("invalid");
+      length.classList.add("valid");
+    }
+    else {
+      length.classList.remove("valid");
+      length.classList.add("invalid");
+    }
+  }
+</script>
+
+<div id="messageCON">
+  <p id="match" class="invalid"><b>Passwords Match</b></p>
+</div>
+
+<script>
+  var myPSWDCONInput = document.getElementById("ConfirmPassword");
+  myPSWDCONInput.onfocus = function() //The user has clicked on the Confirm Password block
+  {
+    document.getElementById("messageCON").style.display = "block";
+    document.getElementById("messagePWD").style.display = "none";
+    document.getElementById("messageCON").scrollIntoView();
+  }
+  myPSWDCONInput.onblur = function() //The user has clicked away from the Confirm Password block
+  {
+    document.getElementById("messageCON").style.display = "none";
+  }
+  myPSWDCONInput.onkeyup = function()
+  {
+    var PasswordPrevEntry = document.getElementById("password").value;
+    var match = document.getElementById("match");
+    if(myPSWDCONInput.value.match(PasswordPrevEntry))
+    {
+        match.classList.remove("invalid");
+        match.classList.add("valid");
+    }
+    else {
+        match.classList.remove("valid");
+        match.classList.add("invalid");
+    }
+  }
+</script>
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
