@@ -1,9 +1,12 @@
 Meeting 4/6/2018
 11:00am
-ITLL 
+ITLL 143
 
 Attendees:
-
+Spencer Wegner
+Christoph Uhl
+Chad Brokaw
+Garrison Lee
 
 Agenda:
 Work on Milestone 4 - Due this Sunday, April 8th
@@ -14,3 +17,7 @@ Work together on project; everyone should have something to work on. If not, hel
 
 
 Debrief:
+Finished Milestone 4
+Got login page to work locally
+We still need to get create an account up and running
+Next step...working with Spotify API and applying our algorithm
