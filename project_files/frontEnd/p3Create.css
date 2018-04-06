@@ -76,6 +76,7 @@ body {
 #messagePWD
 {
 	font-family: Helvetica neue;
+	font-weight: lighter;
 	display: none;
 	position: center;
 	padding: 20px;
@@ -94,6 +95,7 @@ body {
 #messageCON
 {
 	font-family: Helvetica neue;
+	font-weight: lighter;
 	display: none;
 	position: center;
 	padding: 20px;
