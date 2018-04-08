@@ -23,11 +23,19 @@ router.get('/p3Create.html', function(req, res, next) {
 router.post('/p3Create.html', function(req, res, next) {
 	var Nombre = req.body.username;
 	var ShallPass = req.body.password;
-	var sql = mysql.format("INSERT INTO user_login (username, password) VALUES (?,?)",[Nombre,ShallPass]);
+	var sql = mysql.format("SELECT * FROM user_login WHERE username=?",[Nombre]);
 	connection.query(sql, function(err,rows) {
 		if ( err ) throw err;
-		res.redirect('p3Login.html')
-	});
+		if (!rows.length) {
+			sql = mysql.format("INSERT INTO user_login (username, password) VALUES (?,?)",[Nombre,ShallPass]);
+			connection.query(sql, function(err,rows2) {
+				if ( err ) throw err;
+				res.redirect('p3Login.html')
+			});
+		}
+		else{res.end("Username already exists.");}
+	}) 
+
 });
 
 router.get('/p3About.html', function(req, res, next) {
