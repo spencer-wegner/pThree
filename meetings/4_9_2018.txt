@@ -3,9 +3,14 @@ Meeting 4/9/2018
 ITLL 139
 
 Attendees:
-
+Spencer Wegner
+Chad Brokaw
+Sabrina Touch
+Christoph Uhl
 
 Agenda:
 Work together on project; everyone should have something to work on. If not, help someone else!
 
 Debrief:
+We decided our planned finish date is Sunday April 22nd.
+The remaining portions are working with the Spotify API and implementing our 'magic' algorithm
