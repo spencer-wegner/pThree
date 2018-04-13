@@ -3,9 +3,14 @@ Meeting 4/13/2018
 ITLL 139
 
 Attendees:
-
+Spencer Wegner
+Chad Brokaw
+Christoph Uhl
+Sabrina Touch
+Garrison Lee
 
 Agenda:
 Work together on project; everyone should have something to work on. If not, help someone else!
 
 Debrief:
+We figured out the structure of how we will work will the Spotify API and our algorithm to create our final playlist.
