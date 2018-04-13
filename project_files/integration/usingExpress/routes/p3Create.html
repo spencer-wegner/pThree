@@ -47,11 +47,13 @@
     </script>
  </form>
 </div>
-<div id="messagePWD">
+<div class = "wrapper">
+  <div id="messagePWD">
     <p id="letter" class="invalid"><b>Lowercase Letter</b></p>
     <p id="capital" class="invalid"><b>Uppercase Letter</b></p>
     <p id="number" class="invalid"><b>Number</b></p>
     <p id="length" class="invalid"><b>Minimum 8 Characters</b></p>
+  </div>
 </div>
 <!-- Credit to W3 Schools for helping create the following code-->
 <script>
@@ -73,7 +75,7 @@
 
   myPSWDInput.onfocus = function() //The user has clicked on the password block
   {
-    document.getElementById("messagePWD").style.display = "block";
+    document.getElementById("messagePWD").style.display = "inline-block";
     document.getElementById("messageCON").style.display = "none";
     document.getElementById("messagePWD").scrollIntoView();
   }
@@ -129,16 +131,17 @@
     }
   }
 </script>
-
-<div id="messageCON">
-  <p id="match" class="invalid"><b>Passwords Match</b></p>
+<div class="wrapper">
+  <div id="messageCON">
+    <p id="match" class="invalid"><b>Passwords Match</b></p>
+  </div>
 </div>
 
 <script>
   var myPSWDCONInput = document.getElementById("ConfirmPassword");
   myPSWDCONInput.onfocus = function() //The user has clicked on the Confirm Password block
   {
-    document.getElementById("messageCON").style.display = "block";
+    document.getElementById("messageCON").style.display = "inline-block";
     document.getElementById("messagePWD").style.display = "none";
     document.getElementById("messageCON").scrollIntoView();
   }
