@@ -17,7 +17,8 @@ CREATE TABLE if not exists user_login (
 /* user_login data will need to be received and stored */
 INSERT INTO user_login (username, password) VALUES
 ('TestUsername1', 'TestPassword1'),
-('TestUsername2', 'TestPassword2');
+('TestUsername2', 'TestPassword2'),
+('johnwick', 'puppy');
 
 /* TABLE #2 */
 CREATE TABLE if not exists playlist (
