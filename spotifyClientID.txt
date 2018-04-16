@@ -1,1 +1,2 @@
-21bb8d7e10ae46d29026cb125ef768e2
+"Client ID": 21bb8d7e10ae46d29026cb125ef768e2
+"Client Secret": 133121bfe6234ef2879f5793e3fc1b54

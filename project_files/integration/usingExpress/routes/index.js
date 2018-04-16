@@ -1,7 +1,14 @@
 var express = require('express');
+var https = require('https');
+var request = require('request');
 var router = express.Router();
 var mysql = require('mysql');
 var connection = require('./../db')
+
+var client_id = '21bb8d7e10ae46d29026cb125ef768e2';
+var client_secret = '133121bfe6234ef2879f5793e3fc1b54';
+var redirect_uri = 'http://localhost:8080/p3Submit.html';
+var scopes = 'user-read-private user-read-email';
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -46,7 +53,7 @@ router.get('/p3Login.html', function(req, res, next) {
 	res.sendFile('p3Login.html', { root: __dirname});
 });
 
-router.post('/p3Login.html', function(req,res, next) {
+router.post('/p3Login.html', function(req, res, next) {
 	var Nombre = req.body.username;
 	var ShallPass = req.body.password;
 	var sql = mysql.format("SELECT * FROM user_login WHERE username=?",[Nombre]);
@@ -83,4 +90,13 @@ router.get('/pThreeBackPressedDark.png', function(req, res, next) {
 	res.sendFile('pThreeBackPressedDark.png', { root: __dirname});
 });
 
+router.post('/p3Submit.html', function(req, res, next) {
+	var url = "https://accounts.spotify.com/authorize/?client_id=21bb8d7e10ae46d29026cb125ef768e2&response_type=code&redirect_uri=http%3A%2F%2Flocalhost%3A8080%2Fp3Submit.html&scope=user-read-private%20user-read-email&state=34fFs29kd09"
+	res.redirect(url);
+	/*request(url, function(error, res, body){
+		if (!error && res.statusCode == 200){
+			console.log(body)
+		}
+	});*/
+});
 module.exports = router;
