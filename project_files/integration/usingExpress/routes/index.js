@@ -65,8 +65,13 @@ router.post('/p3Login.html', function(req, res, next) {
 		}
 		else {pswd = rows[0].password;}
 		if (pswd == ShallPass) {
+			var spawn = require("child_process").spawn,
+				py = spawn('python',["createPlaylist.py"]);
+			py.stdout.on('end', function(){
+			  console.log('Python Script createPlaylist.py finished');
+			});
 			res.writeHead(200, {'Content-Type': 'text/plain'});
-			res.end("You're in! Booya!");	
+			res.end("You're in! Booya!");
 		}
 		else {
 			res.sendFile('p3Login.html', {root: __dirname});
