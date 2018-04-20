@@ -1,5 +1,5 @@
 /*--- Sabrina Touch ---*/
-/* Last Update: 3/19/2018 */
+/* Last Update: 4/20/2018 */
 
 /* TO CREATE THE DATABASE CALLED 'p3_database' */
 CREATE database p3_database CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
@@ -14,16 +14,10 @@ CREATE TABLE if not exists user_login (
 	PRIMARY KEY(username) 	
 );
 
-/* user_login data will need to be received and stored */
-INSERT INTO user_login (username, password) VALUES
-('TestUsername1', 'TestPassword1'),
-('TestUsername2', 'TestPassword2'),
-('johnwick', 'puppy');
-
 /* TABLE #2 */
 CREATE TABLE if not exists playlist (
 	username	varchar(255)	NOT NULL,
-	url 		varchar(255)	NOT NULL,
+	trackURI 	varchar(255)	NOT NULL,
 
 	FOREIGN KEY(username) REFERENCES user_login(username)
 );
