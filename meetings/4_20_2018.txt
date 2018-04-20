@@ -1,9 +1,11 @@
 Meeting 4/20/2018
 11:00am
-TBD
+ITLL 143
 
 Attendees:
-
+Spencer Wegner
+Christoph Uhl
+Garrison Chad
 
 Agenda:
 Finalize Milestone 5
@@ -11,3 +13,4 @@ Finalize Milestone 5
 Work together on project; everyone should have something to work on. If not, help someone else!
 
 Debrief:
+Worked on Milestone 5 and tried to get Spotify token working.
