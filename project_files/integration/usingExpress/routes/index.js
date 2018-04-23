@@ -9,7 +9,7 @@ var cookieParser = require('cookie-parser');
 
 var client_id = '21bb8d7e10ae46d29026cb125ef768e2';
 var client_secret = '133121bfe6234ef2879f5793e3fc1b54';
-var redirect_uriSub = 'http://localhost:8080/callbackSub/';
+//var redirect_uriSub = 'http://localhost:8080/callbackSub/';
 var redirect_uriGen = 'http://localhost:8080/callbackGen/';
 var scopes = 'user-read-private user-read-email';
 var stateKey = 'spotify_auth_state';
@@ -122,7 +122,30 @@ router.post('/p3Generate.html', function(req, res, next) {
 })
 
 router.post('/p3Submit.html', function(req, res, next) {
-	var state = generateRandomString(16);
+	var userID = req.body.username;	//THESE WILL DEPEND ON CHAD's forms, change once he makes
+	var url = req.body.playlistName; 
+	var selectUsernames = mysql.format("SELECT * FROM user_login WHERE username=?",[userID]);
+	var insertURL = mysql.format("INSERT INTO playlist (username, trackURI) VALUES (?,?)",[userID,url]);
+
+	connection.query(selectUsernames, function(err, rows) {
+		if ( err ) throw err;
+		if (!rows.length) {
+			// CHAD THIS IS WHAT EXECUTES IF THAT NAME DOESN"T EXIST
+			res.redirect('/p3Login.html');
+			//Delete this ^^ just testing.
+		}
+		else{
+			connection.query(insertURL, function(err, blank) {
+				if (err ) throw err;
+				else { res.redirect('/p3Submit.html')}
+			});
+
+		}
+	})
+
+	//This was authentication. Leaving it just in case but ignore it!
+
+	/*var state = generateRandomString(16);
 	res.cookie(stateKey, state);
 	res.redirect("https://accounts.spotify.com/authorize/?" +
 		querystring.stringify({
@@ -131,30 +154,14 @@ router.post('/p3Submit.html', function(req, res, next) {
 			scope: scopes,
 			redirect_uri: redirect_uriSub,
 			state: state
-		}));
+		}));*/
 
-	/*var userID = req.body.userID;	//THESE WILL DEPEND ON CHAD's forms, change once he makes
-	var url = req.body.url; 
-
-	//if userID not there, make the entry and add.
-	//if userID IS there, just add the url
-
-
-	connection.query(sql, function(err,rows) {
-		if ( err ) throw err;
-		if (!rows.length) {
-			sql = mysql.format("INSERT INTO playlist (userID, url) VALUES (?,?)",[]);
-			connection.query(sql, function(err,rows2) {
-				if ( err ) throw err;
-				res.redirect('p3Login.html')
-			});
-		}
-		else{res.end("Username already exists.");}
-	})*/
+	// END IGNORE
 });
 
-//Handles submitting a playlist
-router.get('/callbackSub', function(req, res) {
+//Handles submitting a playlist. SHOULD no longer need this but leaving it just in case.
+
+/*router.get('/callbackSub', function(req, res) {
 	var code = req.query.code || null;
 	var state = req.query.state || null;
 	var storedState = req.cookies ? req.cookies[stateKey] : null;
@@ -212,7 +219,7 @@ router.get('/callbackSub', function(req, res) {
 			}
 		});
 	}
-});
+});*/
 
 //handles generating a playlist
 router.get('/callbackGen', function(req, res) {
