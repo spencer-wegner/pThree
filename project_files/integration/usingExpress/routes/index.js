@@ -229,7 +229,6 @@ router.get('/callbackGen', function(req, res) {
 			if (!error && response.statusCode === 200) {
 				var access_token = body.access_token,
 					refresh_token = body.refresh_token;
-				console.log('before');
 				var options = {
 					url: 'https://api.spotify.com/v1/me',
 					headers: { 'Authorization': 'Bearer ' + access_token },
@@ -241,9 +240,10 @@ router.get('/callbackGen', function(req, res) {
 					console.log(body);
 				});
 
-
+				console.log(body.id)
+				console.log(access_token)
 				var spawn = require("child_process").spawn,
-					py = spawn('python',["createPlaylist.py"],access_token);
+					py = spawn('python',["createPlaylist.py",access_token,body.id]);
 				py.stdout.on('end', function(){
 				console.log('Python Script createPlaylist.py finished');
 				});
