@@ -11,8 +11,10 @@ var client_id = '21bb8d7e10ae46d29026cb125ef768e2';
 var client_secret = '133121bfe6234ef2879f5793e3fc1b54';
 //var redirect_uriSub = 'http://localhost:8080/callbackSub/';
 var redirect_uriGen = 'http://localhost:8080/callbackGen/';
-var scopes = 'user-read-private user-read-email';
+var scopes = 'user-read-private playlist-modify-public';
 var stateKey = 'spotify_auth_state';
+
+//example playlist uri -> spotify:user:fatpanda970:playlist:7A6fgzMDaYYfvhxU2s0lwv
 
 var generateRandomString = function(length) {
 	var text = '';
@@ -123,11 +125,48 @@ router.post('/p3Generate.html', function(req, res, next) {
 
 router.post('/p3Submit.html', function(req, res, next) {
 	var userID = req.body.username;	//THESE WILL DEPEND ON CHAD's forms, change once he makes
-	var url = req.body.playlistName; 
+	var url = req.body.playlistName;
+	var parsedURL = url.split(':');
+	var use_id = parsedURL[2];
+	var playlist_id = parsedURL[4]; 
 	var selectUsernames = mysql.format("SELECT * FROM user_login WHERE username=?",[userID]);
 	var insertURL = mysql.format("INSERT INTO playlist (username, trackURI) VALUES (?,?)",[userID,url]);
+	
+	var authOptions = {
+		url: 'https://accounts.spotify.com/api/token',
+		headers: {
+			'Authorization': 'Basic ' + (new Buffer(client_id + ':' + client_secret).toString('base64'))
+		},
+		form: {
+			grant_type: 'client_credentials'
+		},
+		json: true
+	};
 
-	connection.query(selectUsernames, function(err, rows) {
+	request.post(authOptions, function(error, response, body1) {
+		if (!error && response.statusCode === 200) {
+			var token = body1.access_token;
+			var theURL = `https://api.spotify.com/v1/users/${use_id}/playlists/${playlist_id}/tracks?` +
+				querystring.stringify({
+					fields: 'items(added_at)'
+				});
+			var options = {
+				url: theURL,
+				headers: {
+					'Authorization': 'Bearer ' + token
+				},
+				json: true
+			};
+			request.get(options, function(error, response, body2) {
+				console.log(body2);
+				res.redirect('/p3Submit.html')
+			});
+		}
+	});
+
+
+// move into function?
+	/*connection.query(selectUsernames, function(err, rows) {
 		if ( err ) throw err;
 		if (!rows.length) {
 			// CHAD THIS IS WHAT EXECUTES IF THAT NAME DOESN"T EXIST
@@ -141,7 +180,7 @@ router.post('/p3Submit.html', function(req, res, next) {
 			});
 
 		}
-	})
+	})*/
 
 	//This was authentication. Leaving it just in case but ignore it!
 
@@ -160,7 +199,6 @@ router.post('/p3Submit.html', function(req, res, next) {
 });
 
 //Handles submitting a playlist. SHOULD no longer need this but leaving it just in case.
-
 /*router.get('/callbackSub', function(req, res) {
 	var code = req.query.code || null;
 	var state = req.query.state || null;
@@ -192,19 +230,14 @@ router.post('/p3Submit.html', function(req, res, next) {
 					refresh_token = body.refresh_token;
 				console.log('before');
 				var options = {
-//CRISTOPH!!! Change this url to change what the api returns.
 					url: 'https://api.spotify.com/v1/me',
 					headers: { 'Authorization': 'Bearer ' + access_token },
 					json: true
 				};
-
-//CRISTOPH!!! Inside this function just use "var playlist = body.{whatever they use as a key name}" to make a variable
 				request.get(options, function(error, response, body) {
 					body.access_token = access_token;
 					console.log(body);
 				});
-//Add code to add whatever we have to the sql table here.
-
 
 				res.redirect('/#' +
 					querystring.stringify({
