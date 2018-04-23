@@ -132,6 +132,25 @@ router.post('/p3Submit.html', function(req, res, next) {
 			redirect_uri: redirect_uriSub,
 			state: state
 		}));
+
+	/*var userID = req.body.userID;	//THESE WILL DEPEND ON CHAD's forms, change once he makes
+	var url = req.body.url; 
+
+	//if userID not there, make the entry and add.
+	//if userID IS there, just add the url
+
+
+	connection.query(sql, function(err,rows) {
+		if ( err ) throw err;
+		if (!rows.length) {
+			sql = mysql.format("INSERT INTO playlist (userID, url) VALUES (?,?)",[]);
+			connection.query(sql, function(err,rows2) {
+				if ( err ) throw err;
+				res.redirect('p3Login.html')
+			});
+		}
+		else{res.end("Username already exists.");}
+	})*/
 });
 
 //Handles submitting a playlist
@@ -139,8 +158,6 @@ router.get('/callbackSub', function(req, res) {
 	var code = req.query.code || null;
 	var state = req.query.state || null;
 	var storedState = req.cookies ? req.cookies[stateKey] : null;
-
-	console.log(code,state,storedState);
 
 	if (state === null || state !== storedState) {
 		res.redirect('/#' +
@@ -202,8 +219,6 @@ router.get('/callbackGen', function(req, res) {
 	var code = req.query.code || null;
 	var state = req.query.state || null;
 	var storedState = req.cookies ? req.cookies[stateKey] : null;
-
-	console.log(code,state,storedState);
 
 	if (state === null || state !== storedState) {
 		res.redirect('/#' +
