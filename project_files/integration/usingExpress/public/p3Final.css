@@ -1,0 +1,127 @@
+/* Chad Brokaw*/
+
+body {
+	background: #292a2b !important;
+	margin: 0;
+	padding: 0;
+}
+.box
+{
+	width: 400px;
+	height: 400px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	overflow: hidden;
+
+}
+
+.box .b
+{
+	border-radius: 50%;
+	border-left: 4px solid;
+	border-right: 4px solid;
+	border-top: 4px solid transparent !important;
+	border-bottom: 4px solid transparent !important;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	animation: ro 3s infinite;
+}
+
+.box .b1
+{
+	border-width: thick;
+	border-color: #339fff;
+	box-shadow: #339FFF;
+	width: 400px;
+	height: 400px;
+}
+
+.box .b2
+{
+	border-width: medium;
+	border-color: #33ff93;
+	width: 350px;
+	height: 350px;
+	animation-delay: 0.2s;
+}
+
+.box .b3
+{
+	border-width: medium;
+	border-color: #ff339f;
+	width: 300px;
+	height: 300px;
+	animation-delay: 0.4s;
+}
+
+.box .b4
+{
+	border-width: thin;
+	border-color: #ff9333;
+	width: 250px;
+	height: 250px;
+	animation-delay: 0.6s;
+}
+
+@keyframes ro
+{
+	0%{
+		transform: translate(-50%,-50%) rotate(0deg);
+	}
+	50%{
+		transform: translate(-50%,-50%) rotate(-180deg);
+	}
+	100%{
+		transform: translate(-50%,-50%) rotate(0deg);
+	}
+}
+
+#header1
+{
+  text-align: center;
+  color: #339fff;
+  padding-bottom: 1%;
+  padding-top: 10%;
+  font-size: 60px;
+  font-family: "Helvetica neue";
+  font-weight: 500;
+	/*text-shadow: #339fff 0 0 10px*/
+}
+
+#pThreeLogo
+{
+  width:130px;
+  height:130px;
+  display: block;
+  margin-left: auto;
+  padding-right: 15px;
+  padding-top: 15px;
+}
+
+#pThreeBack
+{
+  width:100px;
+  height:100px;
+  display: block;
+  margin-right: auto;
+  padding-left: 15px;
+  padding-top: 15px;
+}
+.wrapper
+{
+    text-align: center;
+}
+.content-hidden
+{
+	opacity: 0;
+	transition: all 1s ease 1s;
+}
+.content-reveal
+{
+	opacity: 1;
+	transition: all 1s ease 1s;
+}
