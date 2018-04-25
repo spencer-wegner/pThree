@@ -305,7 +305,11 @@ router.get('/callbackGen', function(req, res) {
 					var PythonShell = require('python-shell');
 					//var pyshell = new PythonShell('createPlaylist.py');
 					var options = {
-					  scriptPath: '/home/user/CSCI3308/Project/pThree/project_files/integration/usingExpress/routes/',
+					  //Mike's below
+					  //scriptPath: '/home/user/CSCI3308/Project/pThree/project_files/integration/usingExpress/routes/',
+					  //Garrison's below
+					  scriptPath: '/home/glee/Dropbox/curClasses/softwareDevAndTools/pThree/project_files/integration/usingExpress/routes/',
+					  
 					  args: [access_token, body.id]
 					};
 					 
