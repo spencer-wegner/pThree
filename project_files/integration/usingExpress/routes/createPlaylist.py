@@ -58,4 +58,5 @@ for item in Counts:
 			uriList=uriList+temp
 
 uriList=uriList[uriList.find("spotify:track"):len(uriList)-3]
+print(sys.argv[2])
 print(uriList)
