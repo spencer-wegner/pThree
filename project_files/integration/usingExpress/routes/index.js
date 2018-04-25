@@ -314,9 +314,35 @@ router.get('/callbackGen', function(req, res) {
 					};
 					 
 					PythonShell.run('createPlaylist.py', options, function (err, results) {
-					  if (err) throw err;
-					  // results is an array consisting of messages collected during execution
-					  console.log('results: %j', results);
+					  	if (err) throw err;
+					  	// results is an array consisting of messages collected during execution
+
+						var playlistOptions = {
+							url: 'https://api.spotify.com/v1/users/' + results[0] + '/playlists',
+							body: JSON.stringify({'name': 'p3Playlist', 'public': true}),
+							dataType: 'json',
+							headers: { 'Authorization': 'Bearer ' + results[1],
+							'Content-Type': 'application/json'
+							}
+						};
+
+						request.post(playlistOptions, function(error, response, body5) {
+							jsonBody5 = JSON.stringify(body5)
+
+							console.log('\n' + jsonBody5 + '\n')
+							parsedBody5 = jsonBody5.split(':')
+							doubleParse = parsedBody5[11].split('"')
+							tripleParse = doubleParse[1].substring(0,doubleParse[1].length-1)
+							var populateOptions = {
+								url: 'https://api.spotify.com/v1/users/' + results[0] + '/playlists/' + tripleParse +'/tracks?uris=' + results[2],
+								headers: {'Authorization': 'Bearer ' + results[1],
+								'Accept': 'application/json'}
+							}
+							request.post(populateOptions, function(error, response, body6) {
+								console.log(JSON.stringify(response))
+							})
+
+						})
 					});
 				});
 			}

@@ -3,7 +3,8 @@ import sys
 import json
 import random
 
-c = mysql.connector.connect(user='root', password='movies',
+#Mikes: password='movies',
+c = mysql.connector.connect(user='root', password='p3password',
                             host='localhost',
                             database='p3_database')
 cursor = c.cursor()
