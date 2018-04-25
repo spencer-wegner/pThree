@@ -320,12 +320,20 @@ router.get('/callbackGen', function(req, res) {
 
 
 						var playlistOptions = {
-							url: 'https://api.spotify.com/v1/users//playlists',
+							url: `https://api.spotify.com/v1/users/${results[0]}/playlists`,
+							headers: { 'Authrorization': 'Bearer ' + results[1],
+							'Content-Type': 'application/json'
+							},
 							form: {
-
+								'name': 'p3Playlist',
+								'public': true
 							},
 							json: true
 						}
+
+						request.post(playlistOptions, function(error, response, body5) {
+							console.log(body5)
+						})
 					});
 				
 				});
