@@ -126,9 +126,9 @@ router.post('/p3Generate.html', function(req, res, next) {
 router.post('/p3Submit.html', function(req, res, next) {
 	var userID = req.body.username;
 	var url = req.body.playlistName;
-	var parsedURL = url.split(':');
-	var use_id = parsedURL[2];
-	var playlist_id = parsedURL[4]; 
+	var parsedURL = url.split('/');
+	var use_id = parsedURL[4];
+	var playlist_id = parsedURL[6]; 
 	
 	var authOptions = {
 		url: 'https://accounts.spotify.com/api/token',
