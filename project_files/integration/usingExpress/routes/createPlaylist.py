@@ -2,6 +2,7 @@ import mysql.connector
 import sys
 import requests
 import json
+import random
 
 c = mysql.connector.connect(user='root', password='movies',
                             host='localhost',
@@ -11,11 +12,11 @@ cursor = c.cursor()
 Tracks=[]
 
 def popuTracks():
-	query = ("SELECT url FROM playlist")#WHERE username = ")
+	query = ("SELECT trackURI FROM playlist")#WHERE username = ")
 	cursor.execute(query)
 	#Handle this returned data and populate tracks with track uri
-	for url in cursor:
-		Tracks.append(url[0])
+	for trackURI in cursor:
+		Tracks.append(trackURI[0][trackURI[0].find("uri")+6:len(trackURI[0])-3])
 
 Counts=[];
 def popuCounts():
@@ -47,14 +48,19 @@ for item in Counts:
 	if item[1] > 1:
 		#count is greater than 1, add it
 		trackURI = item[0]
-		temp="spotify:track:"+trackURI+","
+		temp=trackURI+","
 		uriList=uriList+temp
+	else:
+		if random.getrandbits(1) == 1:
+			#Not a match, but we take to fill our lists
+			trackURI = item[0]
+			temp=trackURI+","
+			uriList=uriList+temp
 
-uriList=uriList[0:len(uriList)-1]
-
+uriList=uriList[uriList.find("spotify:track"):len(uriList)-3]
+print(uriList)
 spotifyUsername = sys.argv[1]
 token = sys.argv[0]
-console.log(spotifyUsername,token)
-data = {"name":"P3 Playlist", "public":"false"}
-headers = {"Authorization":token,"Content-Type":"application/json"}
-response = requests.post("https://api.spotify.com/v1/users/"+userID+"/playlists/", data, headers)
+
+response = requests.post("https://api.spotify.com/v1/users/"+spotifyUsername+"/playlists/", data={"name":"P3 Playlist", "public":True}, headers={"Authorization":token,"Content-Type":"application/json"})
+#print(response)

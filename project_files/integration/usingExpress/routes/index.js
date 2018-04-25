@@ -300,14 +300,21 @@ router.get('/callbackGen', function(req, res) {
 				request.get(options, function(error, response, body) {
 					body.access_token = access_token;
 					console.log(body);
-				});
-
-				console.log(body.id)
-				console.log(access_token)
-				var spawn = require("child_process").spawn,
-					py = spawn('python',["createPlaylist.py",access_token,body.id]);
-				py.stdout.on('end', function(){
-				console.log('Python Script createPlaylist.py finished');
+					console.log(body.id);
+					console.log(access_token);
+					var PythonShell = require('python-shell');
+					//var pyshell = new PythonShell('createPlaylist.py');
+					var options = {
+					  scriptPath: '/home/user/CSCI3308/Project/pThree/project_files/integration/usingExpress/routes/',
+					  args: [access_token, body.id]
+					};
+					 
+					PythonShell.run('createPlaylist.py', options, function (err, results) {
+					  if (err) throw err;
+					  // results is an array consisting of messages collected during execution
+					  console.log('results: %j', results);
+					});
+				
 				});
 			}
 		});
