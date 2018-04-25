@@ -124,13 +124,11 @@ router.post('/p3Generate.html', function(req, res, next) {
 })
 
 router.post('/p3Submit.html', function(req, res, next) {
-	var userID = req.body.username;	//THESE WILL DEPEND ON CHAD's forms, change once he makes
+	var userID = req.body.username;
 	var url = req.body.playlistName;
 	var parsedURL = url.split(':');
 	var use_id = parsedURL[2];
 	var playlist_id = parsedURL[4]; 
-	var selectUsernames = mysql.format("SELECT * FROM user_login WHERE username=?",[userID]);
-	var insertURL = mysql.format("INSERT INTO playlist (username, trackURI) VALUES (?,?)",[userID,url]);
 	
 	var authOptions = {
 		url: 'https://accounts.spotify.com/api/token',
@@ -148,7 +146,7 @@ router.post('/p3Submit.html', function(req, res, next) {
 			var token = body1.access_token;
 			var theURL = `https://api.spotify.com/v1/users/${use_id}/playlists/${playlist_id}/tracks?` +
 				querystring.stringify({
-					fields: 'items(added_at)'
+					fields: 'items(track(uri))'
 				});
 			var options = {
 				url: theURL,
@@ -158,7 +156,16 @@ router.post('/p3Submit.html', function(req, res, next) {
 				json: true
 			};
 			request.get(options, function(error, response, body2) {
-				console.log(body2);
+				var body3 = JSON.stringify(body2);
+				parsedBody = body3.split(',')
+				console.log(parsedBody[0]);
+				for (var track_uri in parsedBody) {
+					var insertJSON = mysql.format("INSERT INTO playlist (username, trackURI) VALUES (?,?)",[userID,parsedBody[track_uri]]);
+					console.log(insertJSON);
+					connection.query(insertJSON, function(err, rows) {
+						if ( err ) throw err;
+					})
+				}
 				res.redirect('/p3Submit.html')
 			});
 		}
