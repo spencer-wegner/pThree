@@ -1,6 +1,5 @@
 import mysql.connector
 import sys
-import requests
 import json
 import random
 
@@ -59,8 +58,3 @@ for item in Counts:
 
 uriList=uriList[uriList.find("spotify:track"):len(uriList)-3]
 print(uriList)
-spotifyUsername = sys.argv[1]
-token = sys.argv[0]
-
-response = requests.post("https://api.spotify.com/v1/users/"+spotifyUsername+"/playlists/", data={"name":"P3 Playlist", "public":True}, headers={"Authorization":token,"Content-Type":"application/json"})
-#print(response)
