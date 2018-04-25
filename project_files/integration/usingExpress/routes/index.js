@@ -314,9 +314,18 @@ router.get('/callbackGen', function(req, res) {
 					};
 					 
 					PythonShell.run('createPlaylist.py', options, function (err, results) {
-					  if (err) throw err;
-					  // results is an array consisting of messages collected during execution
-					  console.log('results: %j', results);
+					  	if (err) throw err;
+					  	// results is an array consisting of messages collected during execution
+					  	console.log('results: %j', results);
+
+
+						var playlistOptions = {
+							url: 'https://api.spotify.com/v1/users//playlists',
+							form: {
+
+							},
+							json: true
+						}
 					});
 				
 				});
