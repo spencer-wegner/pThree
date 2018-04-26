@@ -1,9 +1,14 @@
 Meeting 4/25/2018
 11:00am
-TBD
+ITLL 143
 
 Attendees:
-
+Spencer Wegner
+Chad Brokaw
+Garrison Lee
+Michael Hering
+Sabrina Touch
+Christoph Uhl
 
 Agenda:
 Tie up any loose ends on the project.
@@ -11,3 +16,6 @@ Tie up any loose ends on the project.
 Go over presentation.
 
 Debrief:
+Garrison and Michael changed to getting the playlist url rather than the track uris and parsed them; they also got more than 100 tracks from the Spotify API.
+
+We went over the presentation.
