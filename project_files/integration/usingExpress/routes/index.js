@@ -32,6 +32,10 @@ router.get('/', function(req, res, next) {
 	res.sendFile('p3Main.html', { root: __dirname});
 });
 
+router.get('/p3Final.html', function(req, res, next) {
+	res.sendFile('p3Final.html', {root: __dirname});
+});
+
 router.get('/p3Main.html', function(req, res, next) {
 	res.sendFile('p3Main.html', { root: __dirname});
 });
@@ -125,11 +129,16 @@ router.post('/p3Generate.html', function(req, res, next) {
 
 router.post('/p3Submit.html', function(req, res, next) {
 	var userID = req.body.username;
-	var url = req.body.playlistName;
+	var dexOfSi = req.body.playlistName.indexOf("?si=");
+	if (dexOfSi == -1) { 
+		var url = req.body.playlistName; 
+	} else {
+		var url = req.body.playlistName.substring(0,dexOfSi)
+	}
 	var parsedURL = url.split('/');
 	var use_id = parsedURL[4];
 	var playlist_id = parsedURL[6]; 
-	
+
 	var authOptions = {
 		url: 'https://accounts.spotify.com/api/token',
 		headers: {
@@ -144,10 +153,7 @@ router.post('/p3Submit.html', function(req, res, next) {
 	request.post(authOptions, function(error, response, body1) {
 		if (!error && response.statusCode === 200) {
 			var token = body1.access_token;
-			var theURL = `https://api.spotify.com/v1/users/${use_id}/playlists/${playlist_id}/tracks?` +
-				querystring.stringify({
-					fields: 'items(track(uri))'
-				});
+			var theURL = `https://api.spotify.com/v1/users/${use_id}/playlists/${playlist_id}/tracks?` + 'fields=items(track(uri))';
 			var options = {
 				url: theURL,
 				headers: {
@@ -155,13 +161,11 @@ router.post('/p3Submit.html', function(req, res, next) {
 				},
 				json: true
 			};
+
 			request.get(options, function(error, response, body2) {
-				var body3 = JSON.stringify(body2);
-				parsedBody = body3.split(',')
-				console.log(parsedBody[0]);
+				parsedBody = JSON.stringify(body2).split(',');
 				for (var track_uri in parsedBody) {
 					var insertJSON = mysql.format("INSERT INTO playlist (username, trackURI) VALUES (?,?)",[userID,parsedBody[track_uri]]);
-					console.log(insertJSON);
 					connection.query(insertJSON, function(err, rows) {
 						if ( err ) throw err;
 					})
@@ -317,6 +321,10 @@ router.get('/callbackGen', function(req, res) {
 					  	if (err) throw err;
 					  	// results is an array consisting of messages collected during execution
 
+						connection.query(mysql.format("DELETE FROM playlist WHERE username = ?",[results[0]]), function(err, rows) {
+							if ( err ) throw err;
+						});
+						
 						var playlistOptions = {
 							url: 'https://api.spotify.com/v1/users/' + results[0] + '/playlists',
 							body: JSON.stringify({'name': 'p3Playlist', 'public': true}),
@@ -340,6 +348,7 @@ router.get('/callbackGen', function(req, res) {
 							}
 							request.post(populateOptions, function(error, response, body6) {
 								console.log(JSON.stringify(response))
+								res.redirect('/p3Final.html')
 							})
 
 						})
