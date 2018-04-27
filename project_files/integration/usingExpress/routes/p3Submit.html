@@ -30,8 +30,81 @@
      <form class="form-login" method='post'>
         <input id="text" class="form-control" name="username" placeholder="Host ID" required=""  autofocus=""/>
         <input id="playlist" class="form-control" name="playlistName" placeholder="Playlist URL" required=""/>
+        <a  id="modalButton"> Need help? </a>
         <button class="buttonLogin">Submit Playlist</button>
      </form>
+    </div>
+    <!--Credit to W3 schools for helping to create the Modal-->
+    <div id = "myModal" class ="modal">
+      <div class = "modal-content">
+        <div class ="modal-header">
+          <h2>Have questions? We have answers.</h2>
+          <span class="close">&times</span>
+        </div>
+        <div class="modal-body">
+          <dl>
+            <dt>What is a Host ID?</dt>
+            <dd> The Host ID is your host's unique spotify username. This ID is unique to each host, so please ask them for it. Don't be shy!</dd>
+            <dt>What is a Playlist URL?</dt>
+            <dd>A playlist URL is a link that can be found on your spotify app (mobile or desktop). This allows us to access your music and generate the p3. Please note that the playlist you provide must be a public playlist.</dd>
+            <dt>So... how do you get a Playlist URL?</dt>
+            <dd>There are multiple ways to gather your Playlist URL, depending on what platform you are using.</dd>
+            <ul style="list-style-type:circle">
+              <li><strong>Mobile</strong></li>
+                <ol type="1">
+                  <li>Open the Spotify app and select "Your Library" in the bottom right corner of your screen</li>
+                  <li>Go to your Playlists library</li>
+                  <li>Select the playlist that you want</li>
+                  <li>Tap those three dots in the top right corner. A menu will appear</li>
+                  <li>Scroll down the menu until you see "Share". Then tap the "Share" icon. A new menu will appear</li>
+                  <li>Select "Copy Link". The playlist link has been copied, now go ahead and paste it in the "Playlist URL" box below and click Submit</li>
+                  <li>Feel like a badass</li>
+                </ol>
+                <li><strong>Desktop App</strong></li>
+                  <ol type="1">
+                    <li>In the left panel there is a list of all of your playlists, select the one you want to submit</li>
+                    <li>Next to the playlist artwork, there is an icon with three dots. Click on that. A menu will appear</li>
+                    <li>At the bottom of the menu there is a button called "Share". After clicking on that, another menu will appear</li>
+                    <li>At the bottom of this new menu there is an option called "Copy Playlist Link". Select this</li>
+                    <li>Select "Copy Link". Like magic, the playlist link was just copied, go ahead and paste it in the "Playlist URL" box below and then click Submit</li>
+                    <li>Boom. You're awesome</li>
+                  </ol>
+                <li><strong>Online web player</strong></li>
+                  <ol type="1">
+                    <li>Select "Your Music" from the panel on the left</li>
+                    <li>Select "Playlists" from the menu at the top of the page</li>
+                    <li>Click on the playlist you want to share</li>
+                    <li>Underneath the playlist artwork, there is an icon with three dots. Click on those. A new menu should appear</li>
+                    <li>In that menu there is an option called "Copy Playlist link". Yeah, click on that.</li>
+                    <li>The link is copied to your clipboard, now go ahead and paste that into the "Playlist URL" box on our page and then hit Submit</li>
+                    <li>Fuck yeah. You did it.</li>
+                  </ol>
+            </ul>
+
+          </dl>
+        </div>
+      </div>
+    </div>
+    <script>
+      var modal = document.getElementById('myModal');
+      var btn = document.getElementById('modalButton');
+      var span = document.getElementsByClassName('close')[0];
+      btn.onclick = function(){
+        modal.style.display = 'block';
+      }
+      span.onclick = function()
+      {
+        modal.style.display = 'none';
+      }
+      window.onclick = function(event)
+      {
+        if (event.target == modal)
+        {
+          modal.style.display = 'none';
+        }
+      }
+    </script>
+
     </div>
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>

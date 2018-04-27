@@ -11,7 +11,7 @@ body {
   padding-bottom: 1%;
   padding-top: 10%;
   font-size: 60px;
-  font-family: Helvetica neue;
+  font-family: Helvetica neue, Arial;
   font-weight: bold;
 }
 
@@ -45,7 +45,7 @@ body {
 .form-control
 {
   	font-size: 16px;
-    font-family: Helvetica neue;
+    font-family: Helvetica neue, Arial;
     height: auto;
     padding: 10px;
 }
@@ -75,7 +75,7 @@ body {
     text-align: center;
     text-decoration: none;
     font-size: 20px;
-    font-family: Helvetica neue;
+    font-family: Helvetica neue, Arial;
     margin: 4px 2px;
     -webkit-transition-duration: 0.4s;
     transition-duration: 0.4s;
@@ -90,7 +90,7 @@ body {
     font-size: 20px;
     padding-left: 135px;
     padding-right: 135px;
-    font-family: Helvetica neue;
+    font-family: Helvetica neue, Arial;
     border: 2px solid #339fff;
     border-radius: 7px;
 }

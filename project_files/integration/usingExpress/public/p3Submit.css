@@ -1,5 +1,4 @@
 /* Chad Brokaw*/
-
 body {
 	background: #292a2b !important;
 }
@@ -11,7 +10,7 @@ body {
   padding-bottom: 1%;
   padding-top: 10%;
   font-size: 60px;
-  font-family: Helvetica neue;
+  font-family: Helvetica neue, Arial;
   font-weight: bold;
 }
 
@@ -45,7 +44,7 @@ body {
 .form-control
 {
   	font-size: 16px;
-    font-family: Helvetica neue;
+    font-family: Helvetica neue, Arial;
     height: auto;
     padding: 10px;
 }
@@ -75,7 +74,7 @@ body {
     text-align: center;
     text-decoration: none;
     font-size: 20px;
-    font-family: Helvetica neue;
+    font-family: Helvetica neue, Arial;
     margin: 4px 2px;
     -webkit-transition-duration: 0.4s;
     transition-duration: 0.4s;
@@ -90,7 +89,7 @@ body {
     font-size: 20px;
     padding-left: 90px;
     padding-right: 90px;
-    font-family: Helvetica neue;
+    font-family: Helvetica neue, Arial;
     border: 2px solid #339fff;
     border-radius: 7px;
 }
@@ -98,4 +97,85 @@ body {
 .wrapper
 {
     text-align: center;
+}
+
+#modalButton
+{
+	color: white;
+	padding-top: -25px;
+	font-size: 13px;
+	cursor: pointer;
+	font-family: Helvetica neue, Arial;
+}
+
+/*Credit to W3 schools for helping create the modal*/
+
+.modal
+{
+	display: none;
+	position: fixed;
+	z-index: 1;
+	left: 0;
+	top: 0px;
+	width: 100%;
+	height: 100%;
+	overflow: auto;
+	background-color: rgb(0,0,0);
+	background-color: rgba(0,0,0,0.4);
+	padding-top: 5%;
+}
+
+
+
+.close
+{
+	color: white;
+	float: right;
+	font-size: 28px;
+	font-weight: bold;
+}
+
+.close:hover, .close:focus
+{
+	color: black;
+	text-decoration: none;
+	cursor: pointer;
+}
+
+.modal-header
+{
+	padding: 2px 16px;
+	background-color: #339fff;
+	color: white;
+}
+
+.modal-body
+{
+	padding: 2px 16px;
+}
+
+.modal-footer
+{
+	padding: 2px 16px;
+	background-color: #5cb85c;
+	color: white;
+	text-align: left;
+}
+
+.modal-content
+{
+	position: relative;
+	background-color: #fefefe;
+	margin: auto;
+	padding: 0;
+	border: 1px solid #888;
+	width: 60%;
+	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+	animation-name: animatetop;
+	animation-duration: 0.6s;
+}
+
+@keyframes animatetop {
+	from {top: -300px; opacity: 0}
+	to {top: 0; opacity: 1}
 }
