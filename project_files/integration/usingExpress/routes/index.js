@@ -264,6 +264,7 @@ router.get('/callbackGen', function(req, res) {
 								'Accept': 'application/json'}
 							}
 							request.post(populateOptions, function(error, response, body6) {
+								console.log(JSON.stringify(response))								
 								res.redirect('/p3Final.html')
 							})
 

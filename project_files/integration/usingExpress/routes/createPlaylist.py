@@ -19,7 +19,7 @@ def popuTracks():
 		Tracks.append(trackURI[0][trackURI[0].find("uri")+6:len(trackURI[0])-3])
 
 	for item in Tracks:
-		if item.find("items") != -1:
+		if item.find("items") != -1 or item.find("\\") != -1:
 			item = "";
 
 Counts=[];
