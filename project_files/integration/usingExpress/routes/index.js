@@ -227,9 +227,9 @@ router.get('/callbackGen', function(req, res) {
 					//var pyshell = new PythonShell('createPlaylist.py');
 					var options = {
 					  //Mike's below
-					  //scriptPath: '/home/user/CSCI3308/Project/pThree/project_files/integration/usingExpress/routes/',
+					  scriptPath: '/home/user/CSCI3308/Project/pThree/project_files/integration/usingExpress/routes/',
 					  //Garrison's below
-					  scriptPath: '/home/glee/Dropbox/curClasses/softwareDevAndTools/pThree/project_files/integration/usingExpress/routes/',
+					  //scriptPath: '/home/glee/Dropbox/curClasses/softwareDevAndTools/pThree/project_files/integration/usingExpress/routes/',
 					  
 					  args: [access_token, body.id]
 					};
@@ -269,7 +269,6 @@ router.get('/callbackGen', function(req, res) {
 
 						})
 					});
-				
 				});
 			}
 		});
