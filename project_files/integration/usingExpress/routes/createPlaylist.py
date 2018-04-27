@@ -4,7 +4,7 @@ import json
 import random
 
 #Mikes: password='movies',
-c = mysql.connector.connect(user='root', password='movies',
+c = mysql.connector.connect(user='root', password='p3password',
                             host='localhost',
                             database='p3_database')
 cursor = c.cursor()

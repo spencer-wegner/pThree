@@ -227,9 +227,9 @@ router.get('/callbackGen', function(req, res) {
 					//var pyshell = new PythonShell('createPlaylist.py');
 					var options = {
 					  //Mike's below
-					  scriptPath: '/home/user/CSCI3308/Project/pThree/project_files/integration/usingExpress/routes/',
+					  //scriptPath: '/home/user/CSCI3308/Project/pThree/project_files/integration/usingExpress/routes/',
 					  //Garrison's below
-					  //scriptPath: '/home/glee/Dropbox/curClasses/softwareDevAndTools/pThree/project_files/integration/usingExpress/routes/',
+					  scriptPath: '/home/glee/Dropbox/curClasses/softwareDevAndTools/pThree/project_files/integration/usingExpress/routes/',
 					  
 					  args: [access_token, body.id]
 					};
@@ -254,10 +254,11 @@ router.get('/callbackGen', function(req, res) {
 						request.post(playlistOptions, function(error, response, body5) {
 							jsonBody5 = JSON.stringify(body5)
 
-							console.log('\n' + jsonBody5 + '\n')
 							parsedBody5 = jsonBody5.split(':')
 							doubleParse = parsedBody5[11].split('"')
 							tripleParse = doubleParse[1].substring(0,doubleParse[1].length-1)
+							console.log(results[2]);
+
 							var populateOptions = {
 								url: 'https://api.spotify.com/v1/users/' + results[0] + '/playlists/' + tripleParse +'/tracks?uris=' + results[2],
 								headers: {'Authorization': 'Bearer ' + results[1],
