@@ -46,20 +46,20 @@ c.close()
 uriList="uris="
 l = 0;
 for item in Counts:
-	if l < 98: #limit # of songs that make the cut
-		if item[1] > 1:
-			l=l+1
-			#count is greater than 1, add it
+	#if l < 98: #limit # of songs that make the cut
+	if item[1] > 1:
+		#l=l+1
+		#count is greater than 1, add it
+		trackURI = item[0]
+		temp=trackURI+","
+		uriList=uriList+temp
+	else:
+		if random.getrandbits(1) == 1:
+			#l=l+1
+			#Not a match, but we take to fill our lists
 			trackURI = item[0]
 			temp=trackURI+","
 			uriList=uriList+temp
-		else:
-			if random.getrandbits(1) == 1:
-				l=l+1
-				#Not a match, but we take to fill our lists
-				trackURI = item[0]
-				temp=trackURI+","
-				uriList=uriList+temp
 
 uriList=uriList[uriList.find("spotify:track"):len(uriList)-3]
 
