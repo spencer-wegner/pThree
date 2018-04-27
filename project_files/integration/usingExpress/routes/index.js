@@ -9,17 +9,13 @@ var cookieParser = require('cookie-parser');
 
 var client_id = '21bb8d7e10ae46d29026cb125ef768e2';
 var client_secret = '133121bfe6234ef2879f5793e3fc1b54';
-//var redirect_uriSub = 'http://localhost:8080/callbackSub/';
 var redirect_uriGen = 'http://localhost:8080/callbackGen/';
 var scopes = 'user-read-private playlist-modify-public';
 var stateKey = 'spotify_auth_state';
 
-//example playlist uri -> spotify:user:fatpanda970:playlist:7A6fgzMDaYYfvhxU2s0lwv
-
 var generateRandomString = function(length) {
 	var text = '';
 	var possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-
 	for (var i = 0; i < length; i++){
 		text += possible.charAt(Math.floor(Math.random() * possible.length));
 	}
@@ -30,6 +26,10 @@ var generateRandomString = function(length) {
 /* GET home page. */
 router.get('/', function(req, res, next) {
 	res.sendFile('p3Main.html', { root: __dirname});
+});
+
+router.get('/p3Final.html', function(req, res, next) {
+	res.sendFile('p3Final.html', {root: __dirname});
 });
 
 router.get('/p3Main.html', function(req, res, next) {
@@ -56,8 +56,9 @@ router.post('/p3Create.html', function(req, res, next) {
 				if ( err ) throw err;
 				res.redirect('p3Login.html')
 			});
+		} else {
+			res.end("Username already exists.");
 		}
-		else{res.end("Username already exists.");}
 	}) 
 
 });
@@ -125,11 +126,16 @@ router.post('/p3Generate.html', function(req, res, next) {
 
 router.post('/p3Submit.html', function(req, res, next) {
 	var userID = req.body.username;
-	var url = req.body.playlistName;
+	var dexOfSi = req.body.playlistName.indexOf("?si=");
+	if (dexOfSi == -1) { 
+		var url = req.body.playlistName; 
+	} else {
+		var url = req.body.playlistName.substring(0,dexOfSi)
+	}
 	var parsedURL = url.split('/');
 	var use_id = parsedURL[4];
 	var playlist_id = parsedURL[6]; 
-	
+
 	var authOptions = {
 		url: 'https://accounts.spotify.com/api/token',
 		headers: {
@@ -140,126 +146,41 @@ router.post('/p3Submit.html', function(req, res, next) {
 		},
 		json: true
 	};
+	var validNameQuery = mysql.format("SELECT * FROM user_login WHERE username=?",[userID]);
+	connection.query(validNameQuery, function(err, rows){
+		if (!rows.length){ res.redirect('/p3Submit.html?invalid_username')}
+		else {
+			request.post(authOptions, function(error, response, body1) {
+				if (!error && response.statusCode === 200) {
+					var token = body1.access_token;
+					var theURL = `https://api.spotify.com/v1/users/${use_id}/playlists/${playlist_id}/tracks?` + 'fields=items(track(uri))';
+					var options = {
+						url: theURL,
+						headers: {
+							'Authorization': 'Bearer ' + token
+						},
+						json: true
+					};
 
-	request.post(authOptions, function(error, response, body1) {
-		if (!error && response.statusCode === 200) {
-			var token = body1.access_token;
-			var theURL = `https://api.spotify.com/v1/users/${use_id}/playlists/${playlist_id}/tracks?` +
-				querystring.stringify({
-					fields: 'items(track(uri))'
-				});
-			var options = {
-				url: theURL,
-				headers: {
-					'Authorization': 'Bearer ' + token
-				},
-				json: true
-			};
-			request.get(options, function(error, response, body2) {
-				var body3 = JSON.stringify(body2);
-				parsedBody = body3.split(',')
-				console.log(parsedBody[0]);
-				for (var track_uri in parsedBody) {
-					var insertJSON = mysql.format("INSERT INTO playlist (username, trackURI) VALUES (?,?)",[userID,parsedBody[track_uri]]);
-					console.log(insertJSON);
-					connection.query(insertJSON, function(err, rows) {
-						if ( err ) throw err;
-					})
+					request.get(options, function(error, response, body2) {
+						if (!error && response.statusCode === 200) {
+							parsedBody = JSON.stringify(body2).split(',');
+							for (var track_uri in parsedBody) {
+								var insertJSON = mysql.format("INSERT INTO playlist (username, trackURI) VALUES (?,?)",[userID,parsedBody[track_uri]]);
+								connection.query(insertJSON, function(err, rows) {
+									if ( err ) throw err;
+								})
+							}
+							res.redirect('/p3Submit.html')
+						}
+						else{res.redirect('/p3Submit.html?invalid_playlist_link')}
+					});
 				}
-				res.redirect('/p3Submit.html')
+				else {res.redirect('/p3Submit.html?failed_to_get_token')}
 			});
-		}
-	});
-
-
-// move into function?
-	/*connection.query(selectUsernames, function(err, rows) {
-		if ( err ) throw err;
-		if (!rows.length) {
-			// CHAD THIS IS WHAT EXECUTES IF THAT NAME DOESN"T EXIST
-			res.redirect('/p3Login.html');
-			//Delete this ^^ just testing.
-		}
-		else{
-			connection.query(insertURL, function(err, blank) {
-				if (err ) throw err;
-				else { res.redirect('/p3Submit.html')}
-			});
-
-		}
-	})*/
-
-	//This was authentication. Leaving it just in case but ignore it!
-
-	/*var state = generateRandomString(16);
-	res.cookie(stateKey, state);
-	res.redirect("https://accounts.spotify.com/authorize/?" +
-		querystring.stringify({
-			response_type: 'code',
-			client_id: client_id,
-			scope: scopes,
-			redirect_uri: redirect_uriSub,
-			state: state
-		}));*/
-
-	// END IGNORE
-});
-
-//Handles submitting a playlist. SHOULD no longer need this but leaving it just in case.
-/*router.get('/callbackSub', function(req, res) {
-	var code = req.query.code || null;
-	var state = req.query.state || null;
-	var storedState = req.cookies ? req.cookies[stateKey] : null;
-
-	if (state === null || state !== storedState) {
-		res.redirect('/#' +
-			querystring.stringify({
-				error: 'state_mismatch'
-			}));
-	} else {
-		res.clearCookie(stateKey);
-		var authOptions = {
-			url: 'https://accounts.spotify.com/api/token',
-			form: {
-				code: code,
-				redirect_uri: redirect_uriSub,
-				grant_type: 'authorization_code'
-			},
-			headers: {
-				'Authorization': 'Basic ' + (new Buffer(client_id + ':' + client_secret).toString('base64'))
-			},
-			json: true
 		};
-
-		request.post(authOptions, function(error, response, body) {
-			if (!error && response.statusCode === 200) {
-				var access_token = body.access_token,
-					refresh_token = body.refresh_token;
-				console.log('before');
-				var options = {
-					url: 'https://api.spotify.com/v1/me',
-					headers: { 'Authorization': 'Bearer ' + access_token },
-					json: true
-				};
-				request.get(options, function(error, response, body) {
-					body.access_token = access_token;
-					console.log(body);
-				});
-
-				res.redirect('/#' +
-					querystring.stringify({
-						access_token: access_token,
-						refresh_token: refresh_token
-					}));
-			} else {
-				res.redirect('/#' +
-					querystring.stringify({
-					error: 'invalid_token'
-				}));
-			}
-		});
-	}
-});*/
+	});
+});
 
 //handles generating a playlist
 router.get('/callbackGen', function(req, res) {
@@ -317,6 +238,10 @@ router.get('/callbackGen', function(req, res) {
 					  	if (err) throw err;
 					  	// results is an array consisting of messages collected during execution
 
+						connection.query(mysql.format("DELETE FROM playlist WHERE username = ?",[results[0]]), function(err, rows) {
+							if ( err ) throw err;
+						});
+						
 						var playlistOptions = {
 							url: 'https://api.spotify.com/v1/users/' + results[0] + '/playlists',
 							body: JSON.stringify({'name': 'p3Playlist', 'public': true}),
@@ -339,7 +264,7 @@ router.get('/callbackGen', function(req, res) {
 								'Accept': 'application/json'}
 							}
 							request.post(populateOptions, function(error, response, body6) {
-								console.log(JSON.stringify(response))
+								res.redirect('/p3Final.html')
 							})
 
 						})

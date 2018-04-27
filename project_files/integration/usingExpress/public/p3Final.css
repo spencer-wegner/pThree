@@ -87,7 +87,7 @@ body {
   padding-bottom: 1%;
   padding-top: 10%;
   font-size: 60px;
-  font-family: "Helvetica neue";
+  font-family: Helvetica neue, Arial;
   font-weight: 500;
 	/*text-shadow: #339fff 0 0 10px*/
 }
