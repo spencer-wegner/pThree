@@ -235,8 +235,10 @@ router.get('/callbackGen', function(req, res) {
 					};
 					 
 					PythonShell.run('createPlaylist.py', options, function (err, results) {
-					  	if (err) throw err;
-					  	// results is an array consisting of messages collected during execution
+					  	
+						if (err) throw err;
+						console.log("HEEEEERRRREEEEEEE\n")
+					  	console.log(results)// results is an array consisting of messages collected during execution
 
 						connection.query(mysql.format("DELETE FROM playlist WHERE username = ?",[results[0]]), function(err, rows) {
 							if ( err ) throw err;
