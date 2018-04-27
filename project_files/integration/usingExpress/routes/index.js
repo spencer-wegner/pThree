@@ -54,7 +54,7 @@ router.post('/p3Create.html', function(req, res, next) {
 			sql = mysql.format("INSERT INTO user_login (username, password) VALUES (?,?)",[Nombre,ShallPass]);
 			connection.query(sql, function(err,rows2) {
 				if ( err ) throw err;
-				res.redirect('p3Login.html')
+				res.redirect('p3Main.html')
 			});
 		} else {
 			res.end("Username already exists.");
