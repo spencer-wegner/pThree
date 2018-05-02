@@ -26,4 +26,30 @@ Create an account on our website and share your username with your friends or pa
     
 **How to build, run, test, etc.:**
 
+Hello, there are just a few things you need to do to get our project working on your localhost.
+First, lets call the path "pThree/project_files/integration/usingExpress" "base" because we'll use it a lot.
+
+So first thing to do is open mysql and create the database that is defined in pThree/project_files/backEnd/p3_databse.sql.
+
+Next, change the file "base"/db.js so that the username and password values match your username and password for mysql
+
+After that, change the file "base"/routes/createPlaylist.py so that the username and password at the top of that file also match your mysql login information
+
+The last file you need to change is in "base"/index.js. It's a big folder so just scroll down until you see a big gap of whitespace with a comment in the middle saying that the scriptPath variable is right above it (line 232). Modify that variable to be the fullpath on your machine to the routes directory. Or just append "pThree/project_files/integration/usingExpress/routes" to the path to our project.
+
+MIKE, add the dependencies you need here
+
+Finally, just open a terminal, navigate to "base", then type:
+	> npm install
+	> npm start
+and now it's running on localhost:8080. Simply point a browser at localhost:8080 and you'll be able to do everything on our website. I also liked having a second terminal open running mysql so I could see the values in the tables but that isn't strictly necessary.
+
+
+
+
+
+
+
 Server is live: http://creative.colorado.edu/~chuh0424/project_files/frontEnd/p3Main.html 
+
+
