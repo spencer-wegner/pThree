@@ -43,13 +43,3 @@ Finally, just open a terminal, navigate to "base", then type:
 	> npm install
 	> npm start
 and now it's running on localhost:8080. Simply point a browser at localhost:8080 and you'll be able to do everything on our website. I also liked having a second terminal open running mysql so I could see the values in the tables but that isn't strictly necessary.
-
-
-
-
-
-
-
-Server is live: http://creative.colorado.edu/~chuh0424/project_files/frontEnd/p3Main.html 
-
-
