@@ -26,6 +26,8 @@ Create an account on our website and share your username with your friends or pa
     
 **How to build, run, test, etc.:**
 
+Unfortunately we did not have time to upload our project to a server so here are the steps that you need to follow.
+
 Hello, there are just a few things you need to do to get our project working on your localhost.
 First, lets call the path "pThree/project_files/integration/usingExpress" "base" because we'll use it a lot.
 
@@ -43,6 +45,8 @@ Finally, just open a terminal, navigate to "base", then type:
 	> npm install
 	> npm start
 and now it's running on localhost:8080. Simply point a browser at localhost:8080 and you'll be able to do everything on our website. I also liked having a second terminal open running mysql so I could see the values in the tables but that isn't strictly necessary.
+
+Here are a couple of convenient playlist links for you to test: 
 
 Playlist Link #1:
 https://open.spotify.com/user/sabrinatouch/playlist/4cLcJXrLLg7rczlwitXMdJ?si=sVtuZYUYQxmIWfLitMuPGw
