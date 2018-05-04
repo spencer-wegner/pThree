@@ -37,7 +37,7 @@ After that, change the file "base"/routes/createPlaylist.py so that the username
 
 The last file you need to change is in "base"/index.js. It's a big folder so just scroll down until you see a big gap of whitespace with a comment in the middle saying that the scriptPath variable is right above it (line 232). Modify that variable to be the fullpath on your machine to the routes directory. Or just append "pThree/project_files/integration/usingExpress/routes" to the path to our project.
 
-MIKE, add the dependencies you need here
+There are a few dependencies that you will need to install to ensure proper execution of the python script, before starting make sure python is installed on your machine.. First, install the python shell for node js (npm install python-shell). Next, install the mysql connector for python (pip install mysql-connector-python). Finally, install the requests library for python (pip install requests).
 
 Finally, just open a terminal, navigate to "base", then type:
 	> npm install
