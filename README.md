@@ -52,4 +52,4 @@ Playlist Link #1:
 https://open.spotify.com/user/sabrinatouch/playlist/4cLcJXrLLg7rczlwitXMdJ?si=sVtuZYUYQxmIWfLitMuPGw
 
 Playlist Link #2:
-https://open.spotify.com/user/sabrinatouch/playlist/2qKrJfbAQF2vLedAg2eAjH?si=3uYzKuWuROq_d7TdA5Catg
+https://open.spotify.com/user/sabrinatouch/playlist/4cLcJXrLLg7rczlwitXMdJ?si=asfuEIFTSxmIWfKisgnbIP
